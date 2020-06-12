@@ -1,0 +1,7 @@
+.cred
+*.json
+setup
+var
+*.db
+venv
+snippet

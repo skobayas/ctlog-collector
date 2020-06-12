@@ -1,0 +1,8 @@
+create database certs;
+create table certs.certs (id int not null primary key,
+dns_names TEXT,
+    issuer TEXT,
+    not_before TEXT,
+    not_after TEXT,
+    cert_pem TEXT
+    domain TEXT);

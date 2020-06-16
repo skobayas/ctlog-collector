@@ -71,7 +71,7 @@ def insert_ctlog(ctlog):
     result = cursor.fetchone()
 
     if result == None:
-        cursor.execute("INSERT INTO certs.domain_update VALUE (%s, %s)",(domain,datetime.date.today()))
+        cursor.execute("INSERT INTO ctlog_certs.domain_update VALUE (%s, %s)",(domain,datetime.date.today()))
     else:
         cursor.execute("UPDATE domain_update SET last_update=%s WHERE domain=%s", (datetime.date.today(), domain))
 
@@ -82,7 +82,7 @@ def insert_ctlog(ctlog):
     for item in ctlog:
         try:
             cursor.execute(
-                "INSERT INTO certs VALUES (%s,%s,%s,%s,%s,%s,%s)", (item['id'],to_csv_str(item['dns_names']),item['issuer']['name'],item['not_before'],item['not_after'],item["cert"]["data"],domain)
+                "INSERT INTO ctlog_certs VALUES (%s,%s,%s,%s,%s,%s,%s)", (item['id'],to_csv_str(item['dns_names']),item['issuer']['name'],item['not_before'],item['not_after'],item["cert"]["data"],domain)
             )
         except mysql.connector.errors.IntegrityError as e:
             print ('The record {0} exits already, pass it'.format(item['id']))

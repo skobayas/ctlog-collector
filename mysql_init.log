@@ -1,5 +1,5 @@
-create database certs;
-create table certs.ctlog_certs (id int not null primary key,
+create database ctlog_certs;
+create table ctlog_certs.certs (id int not null primary key,
 dns_names TEXT,
     issuer TEXT,
     not_before TEXT,
